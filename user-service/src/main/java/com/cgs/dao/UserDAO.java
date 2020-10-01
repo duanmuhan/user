@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDAO {
 
-    String TABLE_NAME = " user_table ";
+    String TABLE_NAME = " user_info ";
 
     public void insert(User user);
 
