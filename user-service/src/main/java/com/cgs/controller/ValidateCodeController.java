@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ValidateCodeController {
 
 
-    @RequestMapping(value = UrlConstant.LOGOUT,method = RequestMethod.GET)
+    @RequestMapping(value = UrlConstant.PIC_VALIDATOR,method = RequestMethod.GET)
     @ResponseBody
     public Response validateCode(HttpServletRequest servletRequest){
         return new Response();

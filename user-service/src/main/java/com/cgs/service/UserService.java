@@ -5,6 +5,7 @@ import com.cgs.dao.UserDAO;
 import com.cgs.dto.UserDTO;
 import com.cgs.user.User;
 import com.cgs.utils.ResponseUtils;
+import com.cgs.utils.UserIdGenerateUtils;
 import constant.ErrorCode;
 import constant.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -27,11 +28,20 @@ public class UserService {
     @Autowired
     private RedisTemplate redisTemplate;
 
-
     public Response register(UserDTO user, HttpServletRequest servletRequest, HttpServletResponse servletResponse){
         Response response = new Response();
         try {
             User storeUser = convertUser(user);
+            User phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
+            if (ObjectUtils.isEmpty(phoneUser)){
+                response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户电话已经注册");
+                return response;
+            }
+            User mailUser = userDAO.queryUserByMail(user.getMail());
+            if (ObjectUtils.isEmpty(mailUser)){
+                response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户邮箱已经注册");
+                return response;
+            }
             String token = generateUserToken(storeUser.getPassWord());
             redisTemplate.opsForValue().set(token,"",60 * 30 , TimeUnit.SECONDS);
             servletResponse.addHeader("token",token);
@@ -77,6 +87,7 @@ public class UserService {
 
     private User convertUser(UserDTO userDTO){
         User user = new User();
+        user.setUserId(UserIdGenerateUtils.getUserId());
         user.setUserName(userDTO.getUserName());
         String finalPassword = userDTO.getPassWord() + Constant.SALT_STR;
         user.setPassWord(DigestUtils.md5DigestAsHex(finalPassword.getBytes()));
