@@ -28,18 +28,6 @@ public class UserDTO {
     @Pattern(regexp = "^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$",message = "邮箱必须符合邮箱格式")
     private String mail;
 
-    public static void main(String[] args) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUserName("test");
-        userDTO.setTelPhone("15210092031");
-        userDTO.setAuthCode("12345");
-        userDTO.setPassWord("123123");
-        userDTO.setPicUrl("123123");
-        userDTO.setMail("123123123123");
-
-        String str = JSON.toJSONString(userDTO);
-        System.out.println(str);
-    }
 }
 
 
