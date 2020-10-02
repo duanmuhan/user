@@ -33,12 +33,12 @@ public class UserService {
         try {
             User storeUser = convertUser(user);
             User phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
-            if (ObjectUtils.isEmpty(phoneUser)){
+            if (!ObjectUtils.isEmpty(phoneUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户电话已经注册");
                 return response;
             }
             User mailUser = userDAO.queryUserByMail(user.getMail());
-            if (ObjectUtils.isEmpty(mailUser)){
+            if (!ObjectUtils.isEmpty(mailUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户邮箱已经注册");
                 return response;
             }
@@ -76,6 +76,7 @@ public class UserService {
     }
 
     public Response logout(HttpServletRequest servletRequest){
+        servletRequest.getServletContext().getAttribute("token");
         return new Response();
     }
 
@@ -94,6 +95,7 @@ public class UserService {
         user.setTelPhone(userDTO.getTelPhone());
         user.setPicUrl(userDTO.getPicUrl());
         user.setStatus(1);
+        user.setVip(0);
         user.setMail(userDTO.getMail());
         return user;
     }
