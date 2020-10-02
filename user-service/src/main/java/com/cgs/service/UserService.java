@@ -14,7 +14,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
@@ -66,7 +68,8 @@ public class UserService {
                 return response;
             }
             String token = generateUserToken(user.getPassWord());
-            servletResponse.addHeader("token",token);
+            Cookie cookie = new Cookie("token",token);
+            servletResponse.addCookie(cookie);
             redisTemplate.opsForValue().set(token,"",60 * 30 , TimeUnit.SECONDS);
             userDAO.updateLoginStatus(user.getUserId(),1);
         }catch (Exception e){
@@ -76,8 +79,45 @@ public class UserService {
     }
 
     public Response logout(HttpServletRequest servletRequest){
-        servletRequest.getServletContext().getAttribute("token");
-        return new Response();
+        Cookie[] cookies = servletRequest.getCookies();
+        Response response = new Response();
+        if (ObjectUtils.isEmpty(cookies)){
+            response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"未登陆系统");
+            return response;
+        }
+        String token = null;
+        for (Cookie cookie : cookies){
+            if ("token".equals(cookie.getName())){
+                token = cookie.getValue();
+            }
+        }
+        if (StringUtils.isEmpty(token)){
+            response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"未登陆系统");
+            return response;
+        }
+        redisTemplate.delete(token);
+        response = ResponseUtils.buildResponseByCode(ErrorCode.OK,null);
+        return response;
+    }
+
+    public Response auth(HttpServletRequest servletRequest){
+        Response response = null;
+        Cookie[] cookies = servletRequest.getCookies();
+        if (ObjectUtils.isEmpty(cookies)){
+            response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"未登陆系统");
+            return response;
+        }
+        String token = null;
+        for (Cookie cookie : cookies){
+            if ("token".equals(cookie.getName())){
+                token = cookie.getValue();
+            }
+        }
+        if (StringUtils.isEmpty(token) || !redisTemplate.hasKey(token)){
+            response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"未登陆系统");
+            return response;
+        }
+        return response;
     }
 
     private String generateUserToken(String passWord){

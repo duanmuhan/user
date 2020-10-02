@@ -77,7 +77,13 @@ public class UserController {
     @RequestMapping(value = UrlConstant.AUTH,method = RequestMethod.POST)
     @ResponseBody
     public Response auth(HttpServletRequest servletRequest){
-
-        return new Response();
+        Response response = null;
+        try {
+            response = userService.auth(servletRequest);
+        }catch (Exception e){
+            log.error("auth exception:{}",e);
+            response =  ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,e);
+        }
+        return response;
     }
 }
