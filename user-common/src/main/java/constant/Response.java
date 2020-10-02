@@ -2,8 +2,10 @@ package constant;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Response {
+public class Response implements Serializable {
     private Integer code;
     private String message;
     private Object data;
