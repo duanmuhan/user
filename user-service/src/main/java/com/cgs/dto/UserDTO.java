@@ -1,6 +1,5 @@
 package com.cgs.dto;
 
-import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -21,7 +20,11 @@ public class UserDTO {
     @NotNull(message = "电话号码不能为空")
     private String telPhone;
 
+    @NotNull(message = "验证码不能为空")
     private String authCode;
+
+    @NotNull(message = "手机短信验证码不能为空")
+    private String phoneValidateCode;
 
     private String picUrl;
     @NotNull(message = "邮箱名称不能为空")
