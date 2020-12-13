@@ -15,7 +15,7 @@ public class ValidateCodeService {
         return "";
     }
 
-    private String  drawRandomText(int width, int height, BufferedImage bufferedImage){
+    private String drawRandomText(int width, int height, BufferedImage bufferedImage){
         Graphics2D graphics = (Graphics2D)bufferedImage.getGraphics();
         graphics.setColor(Color.WHITE);//设置画笔颜色-验证码背景色
         graphics.fillRect(0, 0, width, height);//填充背景

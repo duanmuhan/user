@@ -1,5 +1,6 @@
 package com.cgs.service;
 
+import com.cgs.bo.UserBO;
 import com.cgs.constant.Constant;
 import com.cgs.dao.UserDAO;
 import com.cgs.dto.UserDTO;
@@ -33,20 +34,20 @@ public class UserService {
     public Response register(UserDTO user, HttpServletRequest servletRequest, HttpServletResponse servletResponse){
         Response response = new Response();
         try {
-            User storeUser = convertUser(user);
-            User phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
+            UserBO phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
             if (!ObjectUtils.isEmpty(phoneUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户电话已经注册");
                 return response;
             }
-            User mailUser = userDAO.queryUserByMail(user.getMail());
-            if (!ObjectUtils.isEmpty(mailUser)){
+            UserBO mailUser = userDAO.queryUserByMail(user.getMail());
+            if (!ObjectUtils.isEmpty(phoneUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户邮箱已经注册");
                 return response;
             }
-            String token = generateUserToken(storeUser.getPassWord());
+            String token = generateUserToken(user.getPassWord());
             redisTemplate.opsForValue().set(token,"",60 * 30 , TimeUnit.SECONDS);
             servletResponse.addHeader("token",token);
+            UserBO us
             userDAO.insert(storeUser);
         }catch (Exception e){
             response = ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,e.getMessage());

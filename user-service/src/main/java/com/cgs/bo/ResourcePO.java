@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResourceBO {
+public class ResourcePO {
     private Long resourceId;
     private String resourceName;
     private Integer type;

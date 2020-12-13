@@ -26,6 +26,9 @@ public class UserDTO {
     @NotNull(message = "手机短信验证码不能为空")
     private String phoneValidateCode;
 
+    @NotNull(message = "用户角色id不能为空")
+    private Long roleId;
+
     private String picUrl;
     @NotNull(message = "邮箱名称不能为空")
     @Pattern(regexp = "^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$",message = "邮箱必须符合邮箱格式")

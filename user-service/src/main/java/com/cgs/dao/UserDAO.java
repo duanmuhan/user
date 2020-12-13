@@ -1,5 +1,6 @@
 package com.cgs.dao;
 
+import com.cgs.bo.UserBO;
 import com.cgs.user.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -29,15 +30,15 @@ public interface UserDAO {
             @Result(property = "mail",column = "mail"),
     })
     @Select(" select * from " + TABLE_NAME + " where tel_phone=#{phone} ")
-    public User queryUserByPhone(@Param("phone") String phone);
+    public UserBO queryUserByPhone(@Param("phone") String phone);
 
     @ResultMap(value="resultMap")
     @Select(" select * from " + TABLE_NAME + " where mail=#{mail} ")
-    public User queryUserByMail(@Param("mail") String mail);
+    public UserBO queryUserByMail(@Param("mail") String mail);
 
     @ResultMap(value="resultMap")
     @Select(" select * from " + TABLE_NAME + " where user_name=#{userName} ")
-    public User queryUserByUserName(@Param("userName") String userName);
+    public UserBO queryUserByUserName(@Param("userName") String userName);
 
 
 }

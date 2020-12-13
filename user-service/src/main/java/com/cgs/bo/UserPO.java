@@ -16,7 +16,7 @@ import javax.validation.constraints.Pattern;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserBO {
+public class UserPO {
 
     private String userName;
 

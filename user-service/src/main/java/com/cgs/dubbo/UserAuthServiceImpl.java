@@ -1,6 +1,7 @@
 package com.cgs.dubbo;
 
 import com.cgs.client.UserAuthService;
+import com.cgs.service.UserService;
 import com.cgs.utils.ResponseUtils;
 import constant.ErrorCode;
 import constant.Response;
@@ -14,6 +15,8 @@ public class UserAuthServiceImpl implements UserAuthService {
 
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private UserService userService;
 
     @Override
     public Response auth(String token) {
@@ -23,5 +26,11 @@ public class UserAuthServiceImpl implements UserAuthService {
             return response;
         }
         return response;
+    }
+
+    @Override
+    public Response queryUserById(Long userId) {
+
+        return null;
     }
 }

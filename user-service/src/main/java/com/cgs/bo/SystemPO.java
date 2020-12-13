@@ -7,19 +7,16 @@ import lombok.NoArgsConstructor;
 /**
  * @author caoguangshu
  * @date 2020/12/13
- * @time 下午3:04
+ * @time 下午3:05
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleResourceMappingBO {
-    private Long roleId;
-    private String roleName;
-    private Long resourceId;
-    private String resourceName;
+public class SystemPO {
     private Long systemId;
-    private Long systemName;
-    private Integer valid;
+    private String systemName;
+    private Integer type;
+    private String description;
     private Long ctime;
     private Long utime;
 }
