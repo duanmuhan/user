@@ -5,12 +5,12 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class Response implements Serializable {
+public class Response<T> implements Serializable {
     private Integer code;
     private String message;
-    private Object data;
+    private T data;
 
-    public Response(Integer code, String message, Object data){
+    public Response(Integer code, String message, T data){
         this.code = code;
         this.message = message;
         this.data = data;

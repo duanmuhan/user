@@ -1,6 +1,6 @@
 package com.cgs.service;
 
-import com.cgs.bo.UserPO;
+import com.cgs.po.UserPO;
 import com.cgs.constant.Constant;
 import com.cgs.dao.UserDAO;
 import com.cgs.dto.UserDTO;

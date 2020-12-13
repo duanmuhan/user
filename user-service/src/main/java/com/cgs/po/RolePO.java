@@ -1,4 +1,4 @@
-package com.cgs.bo;
+package com.cgs.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,16 +7,18 @@ import lombok.NoArgsConstructor;
 /**
  * @author caoguangshu
  * @date 2020/12/13
- * @time 下午3:05
+ * @time 下午2:53
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SystemPO {
+public class RolePO {
     private Long systemId;
     private String systemName;
-    private Integer type;
+    private Long roleId;
+    private String roleName;
     private String description;
+    private Integer valid;
     private Long ctime;
     private Long utime;
 }

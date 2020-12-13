@@ -31,6 +31,6 @@ public class UserAuthServiceImpl implements UserAuthService {
     @Override
     public Response queryUserById(Long userId) {
 
-        return null;
+        return new Response();
     }
 }

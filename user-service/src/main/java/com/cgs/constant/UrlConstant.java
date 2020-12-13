@@ -17,6 +17,9 @@ public interface UrlConstant {
     String RESOURCE_DELETE = "/resource/delete";
     String QUERY_SYSTEM_RESOURCE = "/query/system/resource";
 
+    String SYSTEM_ADD = "/system/add";
+    String SYSTEM_DELETE = "/system/delete";
+
     String PHONE_VALIDATOR = "/stock/phone/validator";
     String PIC_VALIDATOR = "/stock/pic/validator";
 }

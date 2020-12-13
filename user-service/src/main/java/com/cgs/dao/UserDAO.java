@@ -1,6 +1,6 @@
 package com.cgs.dao;
 
-import com.cgs.bo.UserPO;
+import com.cgs.po.UserPO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

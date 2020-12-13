@@ -1,4 +1,4 @@
-package com.cgs.bo;
+package com.cgs.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
