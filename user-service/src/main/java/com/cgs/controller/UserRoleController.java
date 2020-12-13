@@ -6,7 +6,6 @@ import com.cgs.service.UserRoleService;
 import constant.Response;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -29,8 +28,8 @@ public class UserRoleController {
     @Autowired
     private UserRoleService userRoleService;
 
-    @RequestMapping(value = UrlConstant.ROLL_ADD,method = RequestMethod.POST)
-    public Response addRoleByUserId(@RequestBody @Valid UserRoleDTO userRoleDTO,BindingResult result){
+    @RequestMapping(value = UrlConstant.ROLE_QUERY,method = RequestMethod.POST)
+    public Response queryRoleByUserId(@RequestBody @Valid UserRoleDTO userRoleDTO,BindingResult result){
         Response response = new Response();
 
         return response;
