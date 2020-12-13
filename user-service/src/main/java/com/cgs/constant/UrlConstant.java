@@ -2,6 +2,8 @@ package com.cgs.constant;
 
 public interface UrlConstant {
 
+    String SSO_URL_PREFIX = "/";
+
     String REGISTRY = "/user/registry";
     String LOGIN = "/user/login";
     String AUTH = "/user/auth";

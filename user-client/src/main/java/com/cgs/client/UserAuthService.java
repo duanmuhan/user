@@ -10,4 +10,6 @@ import constant.Response;
 public interface UserAuthService {
 
     public Response auth(String token);
+
+    public Response queryUserById(Long userId);
 }

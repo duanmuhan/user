@@ -6,4 +6,6 @@ package com.cgs.client;
  * @time 上午1:03
  */
 public interface UserRoleService {
+
+    public
 }

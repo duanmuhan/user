@@ -3,7 +3,7 @@ package com.cgs.user;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserDTO {
     private Long userId;
     private String userName;
     private String passWord;
