@@ -13,10 +13,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRoleMappingPO {
+
     private Long userId;
     private String userName;
     private Long roleId;
     private Long roleName;
+    private Long systemId;
+    private String systemName;
     private Integer valid;
     private Long ctime;
     private Long utime;
