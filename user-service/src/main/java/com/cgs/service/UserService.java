@@ -1,10 +1,9 @@
 package com.cgs.service;
 
-import com.cgs.bo.UserBO;
+import com.cgs.bo.UserPO;
 import com.cgs.constant.Constant;
 import com.cgs.dao.UserDAO;
 import com.cgs.dto.UserDTO;
-import com.cgs.user.User;
 import com.cgs.utils.ResponseUtils;
 import com.cgs.utils.UserIdGenerateUtils;
 import constant.ErrorCode;
@@ -34,12 +33,12 @@ public class UserService {
     public Response register(UserDTO user, HttpServletRequest servletRequest, HttpServletResponse servletResponse){
         Response response = new Response();
         try {
-            UserBO phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
+            UserPO phoneUser = userDAO.queryUserByPhone(user.getTelPhone());
             if (!ObjectUtils.isEmpty(phoneUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户电话已经注册");
                 return response;
             }
-            UserBO mailUser = userDAO.queryUserByMail(user.getMail());
+            UserPO mailUser = userDAO.queryUserByMail(user.getMail());
             if (!ObjectUtils.isEmpty(phoneUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户邮箱已经注册");
                 return response;
@@ -47,7 +46,7 @@ public class UserService {
             String token = generateUserToken(user.getPassWord());
             redisTemplate.opsForValue().set(token,"",60 * 30 , TimeUnit.SECONDS);
             servletResponse.addHeader("token",token);
-            UserBO us
+            UserPO storeUser = new UserPO();
             userDAO.insert(storeUser);
         }catch (Exception e){
             response = ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,e.getMessage());
@@ -58,7 +57,7 @@ public class UserService {
     public Response login(String userName, String passWord, HttpServletRequest servletRequest, HttpServletResponse servletResponse){
         Response response = new Response();
         try {
-            User user = userDAO.queryUserByUserName(userName);
+            UserPO user = userDAO.queryUserByUserName(userName);
             if (ObjectUtils.isEmpty(user)){
                 response = new Response(ErrorCode.LOGIN_ERROR.getCode(),ErrorCode.LOGIN_ERROR.getMessage(),null);
                 return response;
@@ -127,16 +126,14 @@ public class UserService {
         return token;
     }
 
-    private User convertUser(UserDTO userDTO){
-        User user = new User();
+    private UserPO convertUser(UserDTO userDTO){
+        UserPO user = new UserPO();
         user.setUserId(UserIdGenerateUtils.getUserId());
         user.setUserName(userDTO.getUserName());
         String finalPassword = userDTO.getPassWord() + Constant.SALT_STR;
         user.setPassWord(DigestUtils.md5DigestAsHex(finalPassword.getBytes()));
         user.setTelPhone(userDTO.getTelPhone());
         user.setPicUrl(userDTO.getPicUrl());
-        user.setStatus(1);
-        user.setVip(0);
         user.setMail(userDTO.getMail());
         return user;
     }

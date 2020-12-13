@@ -1,6 +1,7 @@
 package com.cgs.dubbo;
 
 import com.cgs.client.UserRoleService;
+import constant.Response;
 
 /**
  * @author caoguangshu
@@ -8,4 +9,11 @@ import com.cgs.client.UserRoleService;
  * @time 下午3:58
  */
 public class UserRoleServiceImpl implements UserRoleService {
+
+
+
+    @Override
+    public Response queryUserByUserId(Long userId) {
+        return null;
+    }
 }

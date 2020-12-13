@@ -1,5 +1,8 @@
 package com.cgs.client;
 
+import com.cgs.user.UserDTO;
+import constant.Response;
+
 /**
  * @author caoguangshu
  * @date 2020/11/30
@@ -7,5 +10,5 @@ package com.cgs.client;
  */
 public interface UserRoleService {
 
-    public
+    public Response queryUserByUserId(Long userId);
 }

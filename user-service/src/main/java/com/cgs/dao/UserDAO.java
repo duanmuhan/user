@@ -1,7 +1,6 @@
 package com.cgs.dao;
 
-import com.cgs.bo.UserBO;
-import com.cgs.user.User;
+import com.cgs.bo.UserPO;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +13,7 @@ public interface UserDAO {
 
     @Insert("insert into " + TABLE_NAME + "(" + COLUMNS + ")"
             + " values (#{user.userId}, #{user.userName}, #{user.passWord}, #{user.telPhone}, #{user.picUrl}, #{user.status}, #{user.vip}, #{user.mail} )")
-    public void insert(@Param("user") User user);
+    public void insert(@Param("user") UserPO user);
 
     @Update(" update " + TABLE_NAME + " set status = status where user_id=#{userId} ")
     public void updateLoginStatus(@Param("userId") Long userId, @Param("status") Integer status);
@@ -30,15 +29,15 @@ public interface UserDAO {
             @Result(property = "mail",column = "mail"),
     })
     @Select(" select * from " + TABLE_NAME + " where tel_phone=#{phone} ")
-    public UserBO queryUserByPhone(@Param("phone") String phone);
+    public UserPO queryUserByPhone(@Param("phone") String phone);
 
     @ResultMap(value="resultMap")
     @Select(" select * from " + TABLE_NAME + " where mail=#{mail} ")
-    public UserBO queryUserByMail(@Param("mail") String mail);
+    public UserPO queryUserByMail(@Param("mail") String mail);
 
     @ResultMap(value="resultMap")
     @Select(" select * from " + TABLE_NAME + " where user_name=#{userName} ")
-    public UserBO queryUserByUserName(@Param("userName") String userName);
+    public UserPO queryUserByUserName(@Param("userName") String userName);
 
 
 }

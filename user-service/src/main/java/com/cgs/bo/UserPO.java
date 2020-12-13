@@ -18,6 +18,8 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 public class UserPO {
 
+    private Long userId;
+
     private String userName;
 
     private String passWord;
@@ -29,6 +31,8 @@ public class UserPO {
     private String mail;
 
     private Long systemId;
+
+    private Long roleId;
 
     private String systemName;
 
