@@ -1,7 +1,6 @@
 package com.cgs.dubbo;
 
-import com.cgs.dao.UserDAO;
-import com.cgs.interfaces.UserAuthService;
+import com.cgs.client.UserAuthService;
 import com.cgs.utils.ResponseUtils;
 import constant.ErrorCode;
 import constant.Response;

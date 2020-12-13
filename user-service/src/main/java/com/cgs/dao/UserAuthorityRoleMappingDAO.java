@@ -1,5 +1,8 @@
 package com.cgs.dao;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface UserAuthorityRoleMappingDAO {
 
     String TABLE_NAME = " user_authority ";

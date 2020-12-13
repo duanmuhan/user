@@ -12,7 +12,7 @@
     <jmxConfigurator />
 
     <!-- 定义日志文件 输出位置 -->
-    <property name="log_dir" value="/home/data/logs/user" />
+    <property name="log_dir" value="/Users/logs" />
 
     <!-- 日志最大的历史 30天 -->
     <property name="maxHistory" value="3" />
@@ -137,10 +137,10 @@
     <root>
         <!-- 控制台输出 -->
         <appender-ref ref="console" />
-        <!-- 文件输出 -->
-        <appender-ref ref="ERROR" />
-        <appender-ref ref="INFO" />
-        <appender-ref ref="WARN" />
-        <appender-ref ref="TRACE" />
+<!--        &lt;!&ndash; 文件输出 &ndash;&gt;-->
+<!--        <appender-ref ref="ERROR" />-->
+<!--        <appender-ref ref="INFO" />-->
+<!--        <appender-ref ref="WARN" />-->
+<!--        <appender-ref ref="TRACE" />-->
     </root>
 </configuration>
