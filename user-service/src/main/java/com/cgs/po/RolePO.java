@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RolePO {
-    private Long systemId;
-    private String systemName;
     private Long roleId;
     private String roleName;
     private String description;

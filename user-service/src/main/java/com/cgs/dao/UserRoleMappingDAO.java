@@ -1,5 +1,6 @@
 package com.cgs.dao;
 
+import com.cgs.po.RolePO;
 import com.cgs.po.UserRoleMappingPO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -10,7 +11,7 @@ public interface UserRoleMappingDAO {
 
     String TABLE_NAME = " user_role_mapping ";
 
-    String COLUMNS = " user_id, user_name, system_id, system_name, role_id, role_name,valid, ctime, utime ";
+    String COLUMNS = " user_id, user_name, role_id, role_name,valid, ctime, utime ";
 
     @Insert(" insert into " + TABLE_NAME + "(" + COLUMNS + ")" + " values " +
             " values" +
@@ -20,5 +21,6 @@ public interface UserRoleMappingDAO {
     public void insertUserRollMapping(@Param("userRole") UserRoleMappingPO userRoleMappingPO);
 
 
+    public RolePO
 
 }

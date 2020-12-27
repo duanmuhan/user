@@ -18,8 +18,6 @@ public class UserRoleMappingPO {
     private String userName;
     private Long roleId;
     private Long roleName;
-    private Long systemId;
-    private String systemName;
     private Integer valid;
     private Long ctime;
     private Long utime;
