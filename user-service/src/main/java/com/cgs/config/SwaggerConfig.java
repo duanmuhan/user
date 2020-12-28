@@ -1,6 +1,7 @@
 package com.cgs.config;
 
 import com.cgs.interceptor.CORSInterceptor;
+import com.cgs.interceptor.GlobalExceptionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Autowired
-    CORSInterceptor corsInterceptor;
+    private CORSInterceptor corsInterceptor;
 
     @Bean
     public Docket createRestApi() {

@@ -11,13 +11,11 @@ public interface UrlConstant {
 
     String ROLE_QUERY = "/role/query";
 
-    String QUERY_SYSTEM_ROLE= "/query/system/role";
 
-    String QUERY_SYSTEM_RESOURCE = "/query/system/resource";
 
-    String SYSTEM_ADD = "/system/add";
-    String SYSTEM_DELETE = "/system/delete";
 
     String PHONE_VALIDATOR = "/stock/phone/validator";
     String PIC_VALIDATOR = "/stock/pic/validator";
+
+
 }

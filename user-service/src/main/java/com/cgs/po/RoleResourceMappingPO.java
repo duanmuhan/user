@@ -17,8 +17,6 @@ public class RoleResourceMappingPO {
     private String roleName;
     private Long resourceId;
     private String resourceName;
-    private Long systemId;
-    private Long systemName;
     private Integer valid;
     private Long ctime;
     private Long utime;

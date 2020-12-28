@@ -20,6 +20,7 @@ import javax.validation.Valid;
 @Controller
 @Api(tags = "用户相关接口")
 @Slf4j
+@RequestMapping(value = UrlConstant.SSO_URL_PREFIX)
 public class UserController {
 
     @Autowired

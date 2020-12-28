@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class UserRoleService {
+public class UserRoleMappingService {
 
     @Autowired
     private UserRoleMappingDAO userRoleMappingDAO;

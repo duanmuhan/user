@@ -2,7 +2,7 @@ package com.cgs.controller;
 
 import com.cgs.constant.UrlConstant;
 import com.cgs.dto.UserRoleDTO;
-import com.cgs.service.UserRoleService;
+import com.cgs.service.UserRoleMappingService;
 import constant.Response;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import javax.validation.Valid;
 public class UserRoleController {
 
     @Autowired
-    private UserRoleService userRoleService;
+    private UserRoleMappingService userRoleMappingService;
 
     @RequestMapping(value = UrlConstant.ROLE_QUERY,method = RequestMethod.POST)
     public Response queryRoleByUserId(@RequestBody @Valid UserRoleDTO userRoleDTO,BindingResult result){

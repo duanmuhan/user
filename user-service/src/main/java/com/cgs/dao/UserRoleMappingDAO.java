@@ -4,6 +4,7 @@ import com.cgs.po.RolePO;
 import com.cgs.po.UserRoleMappingPO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -21,6 +22,8 @@ public interface UserRoleMappingDAO {
     public void insertUserRollMapping(@Param("userRole") UserRoleMappingPO userRoleMappingPO);
 
 
-    public RolePO
+    @Select("")
+    public UserRoleMappingPO queryUserRoleMappingByUserId(@Param("userId") Long userId);
+
 
 }
