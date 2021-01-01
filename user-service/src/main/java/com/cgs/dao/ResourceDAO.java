@@ -12,5 +12,7 @@ public interface ResourceDAO {
 
     String TABLE = "resource_info";
 
-    String COLUMNS = "";
+    String COLUMNS = "resource_id, resource_name, valid, description";
+
+
 }

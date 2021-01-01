@@ -23,6 +23,7 @@ import javax.validation.Valid;
 @Controller
 @Api(tags = "用户和角色配置接口")
 @Slf4j
+@RequestMapping(value = UrlConstant.SSO_URL_PREFIX)
 public class UserRoleController {
 
     @Autowired

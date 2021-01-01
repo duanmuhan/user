@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @Api(tags = "验证码相关接口")
 @Slf4j
+@RequestMapping(value = UrlConstant.SSO_URL_PREFIX)
 public class ValidateCodeController {
 
     @Autowired

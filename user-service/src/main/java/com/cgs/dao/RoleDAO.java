@@ -17,5 +17,4 @@ public interface RoleDAO {
             + "values (#{role.roleId},#{role.roleName},#{role.description},#{role.valid},#{role.ctime},#{role.utime})")
     public void insertRole(@Param("role")RolePO rolePO);
 
-
 }
