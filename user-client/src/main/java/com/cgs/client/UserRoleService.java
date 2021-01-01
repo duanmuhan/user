@@ -11,4 +11,6 @@ import constant.Response;
 public interface UserRoleService {
 
     public Response<UserDTO> queryUserByUserId(Long userId);
+
+    public Response<UserDTO> modifyUserRoleByUserId(Long userId);
 }

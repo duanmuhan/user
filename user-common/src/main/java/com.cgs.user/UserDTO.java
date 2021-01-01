@@ -15,5 +15,6 @@ public class UserDTO implements Serializable {
     private Integer status;
     private Integer vip;
     private String mail;
-    private List<RoleDTO> roleList;
+    private RoleDTO roleList;
+
 }
