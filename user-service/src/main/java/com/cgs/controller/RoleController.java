@@ -2,9 +2,13 @@ package com.cgs.controller;
 
 import com.cgs.constant.UrlConstant;
 import com.cgs.request.RoleRequest;
+import com.cgs.service.RoleService;
+import com.cgs.utils.ResponseUtils;
+import constant.ErrorCode;
 import constant.Response;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +26,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = UrlConstant.SSO_URL_PREFIX)
 public class RoleController {
 
+    @Autowired
+    private RoleService roleService;
 
-
-    @RequestMapping(value = UrlConstant.LOGIN,method = RequestMethod.POST)
+    @RequestMapping(value = UrlConstant.ROLE_ADD,method = RequestMethod.POST)
     @ResponseBody
     public Response roleAdd(@RequestBody RoleRequest roleRequest){
-        return new Response();
+        roleService.addRole(roleRequest);
+        return ResponseUtils.buildResponseByCode(ErrorCode.OK,"添加成功");
     }
 }

@@ -9,10 +9,8 @@ public interface UrlConstant {
     String AUTH = "/user/auth";
     String LOGOUT = "/user/logout";
 
+    String ROLE_ADD = "/role/add";
     String ROLE_QUERY = "/role/query";
-
-
-
 
     String PHONE_VALIDATOR = "/stock/phone/validator";
     String PIC_VALIDATOR = "/stock/pic/validator";

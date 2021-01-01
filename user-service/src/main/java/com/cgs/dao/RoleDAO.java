@@ -1,10 +1,21 @@
 package com.cgs.dao;
 
-interface RoleDAO {
+import com.cgs.po.RolePO;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
-    String TABLE_NAME = "role_info";
+@Repository
+public interface RoleDAO {
 
-    String COLUMNS = " system_id, system_name, role_id, role_name, description";
+    String TABLE_NAME = " role_info ";
+
+    String COLUMNS = "role_id, role_name, description, ctime, utime";
+
+    @Insert(" insert into " + TABLE_NAME + "(" + COLUMNS + ")"
+            + "values (#{role.roleId},#{role.roleName},#{role.description},#{role.valid},#{role.ctime},#{role.utime})")
+    public void insertRole(@Param("role")RolePO rolePO);
 
 
 }

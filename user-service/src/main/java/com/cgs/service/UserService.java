@@ -1,5 +1,6 @@
 package com.cgs.service;
 
+import com.cgs.dao.RoleDAO;
 import com.cgs.po.UserPO;
 import com.cgs.constant.Constant;
 import com.cgs.dao.UserDAO;
@@ -27,6 +28,8 @@ public class UserService {
 
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private RoleDAO roleDAO;
     @Autowired
     private RedisTemplate redisTemplate;
 

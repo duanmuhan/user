@@ -1,7 +1,7 @@
 package com.cgs.service;
 
 import com.cgs.dao.UserRoleMappingDAO;
-import com.cgs.dto.UserRoleDTO;
+import com.cgs.dto.UserRoleMappingDTO;
 import com.cgs.utils.ResponseUtils;
 import constant.ErrorCode;
 import constant.Response;
@@ -21,9 +21,7 @@ public class UserRoleMappingService {
     @Autowired
     private UserRoleMappingDAO userRoleMappingDAO;
 
-    public Response addUserRole(UserRoleDTO userRoleDTO){
-
-
+    public Response addUserRole(UserRoleMappingDTO userRoleDTO){
 
         return ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,null);
     }

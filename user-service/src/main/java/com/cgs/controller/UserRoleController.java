@@ -1,7 +1,7 @@
 package com.cgs.controller;
 
 import com.cgs.constant.UrlConstant;
-import com.cgs.dto.UserRoleDTO;
+import com.cgs.dto.UserRoleMappingDTO;
 import com.cgs.service.UserRoleMappingService;
 import constant.Response;
 import io.swagger.annotations.Api;
@@ -29,7 +29,7 @@ public class UserRoleController {
     private UserRoleMappingService userRoleMappingService;
 
     @RequestMapping(value = UrlConstant.ROLE_QUERY,method = RequestMethod.POST)
-    public Response queryRoleByUserId(@RequestBody @Valid UserRoleDTO userRoleDTO,BindingResult result){
+    public Response queryRoleByUserId(@RequestBody @Valid UserRoleMappingDTO userRoleDTO, BindingResult result){
         Response response = new Response();
 
         return response;

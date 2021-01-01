@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * @time 下午4:08
  */
 @Data
-public class UserRoleDTO {
+public class UserRoleMappingDTO {
 
     @NotNull(message = "userId 不能为空")
     private Long userId;
