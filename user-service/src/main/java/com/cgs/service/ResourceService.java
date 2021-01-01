@@ -1,6 +1,7 @@
 package com.cgs.service;
 
 import com.cgs.dao.ResourceDAO;
+import com.cgs.po.ResourcePO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +14,8 @@ import org.springframework.stereotype.Service;
 public class ResourceService {
     @Autowired
     private ResourceDAO resourceDAO;
+
+    public void addResource(ResourcePO resource){
+
+    }
 }
