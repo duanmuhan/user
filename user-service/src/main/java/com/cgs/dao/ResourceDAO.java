@@ -3,7 +3,10 @@ package com.cgs.dao;
 import com.cgs.po.ResourcePO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author caoguangshu
@@ -21,4 +24,7 @@ public interface ResourceDAO {
     @Insert("insert into " + TABLE_NAME + "(" + COLUMNS + ")"
             + " values (#{resource.resourceId}, #{resource.name}, #{resource.description}, #{resource.valid} )")
     void addResource(@Param("resource") ResourcePO resourcePO);
+
+    @Select(" select ")
+    List<ResourcePO> queryAllResources()
 }

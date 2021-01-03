@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class ResourcePO {
 
-    private Long resourceId;
+    private String resourceId;
     private String name;
     private String description;
     private Integer valid;

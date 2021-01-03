@@ -9,5 +9,8 @@ import lombok.Data;
  */
 @Data
 public class ResourceVO {
-    private Long resourceId;
+
+    private String resourceId;
+    private String resourceName;
+    private String description;
 }

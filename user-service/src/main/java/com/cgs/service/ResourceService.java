@@ -2,9 +2,12 @@ package com.cgs.service;
 
 import com.cgs.dao.ResourceDAO;
 import com.cgs.po.ResourcePO;
-import jdk.management.resource.ResourceRequest;
+import com.cgs.request.ResourceRequest;
+import com.cgs.vo.ResourceVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author caoguangshu
@@ -17,6 +20,15 @@ public class ResourceService {
     private ResourceDAO resourceDAO;
 
     public void addResource(ResourceRequest resource){
+        ResourcePO po = new ResourcePO();
+        po.setResourceId(resource.getResourceId());
+        po.setName(resource.getResourceName());
+        po.setDescription(resource.getDescription());
+        po.setValid(1);
+        resourceDAO.addResource(po);
+    }
+
+    List<ResourceVO> queryResourceList(){
 
     }
 }
