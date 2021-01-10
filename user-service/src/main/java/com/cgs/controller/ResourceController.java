@@ -37,6 +37,6 @@ public class ResourceController {
 
     @RequestMapping(value = UrlConstant.RESOURCE_QUERY)
     public Response queryResource(HttpServletRequest httpServletRequest){
-
+        return ResponseUtils.buildResponseByCode(ErrorCode.OK,null);
     }
 }

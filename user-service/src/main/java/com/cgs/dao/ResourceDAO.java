@@ -25,6 +25,5 @@ public interface ResourceDAO {
             + " values (#{resource.resourceId}, #{resource.name}, #{resource.description}, #{resource.valid} )")
     void addResource(@Param("resource") ResourcePO resourcePO);
 
-    @Select(" select ")
-    List<ResourcePO> queryAllResources()
+    List<ResourcePO> queryAllResources();
 }
