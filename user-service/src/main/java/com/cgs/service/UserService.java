@@ -1,12 +1,12 @@
 package com.cgs.service;
 
-import com.cgs.dao.RoleDAO;
+import com.cgs.dao.*;
 import com.cgs.po.UserPO;
 import com.cgs.constant.Constant;
-import com.cgs.dao.UserDAO;
 import com.cgs.dto.UserDTO;
 import com.cgs.utils.ResponseUtils;
 import com.cgs.utils.UserIdGenerateUtils;
+import com.cgs.vo.UserVO;
 import constant.ErrorCode;
 import constant.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,9 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
     @Autowired
-    private RoleDAO roleDAO;
+    private UserRoleMappingDAO userRoleMappingDAO;
+    @Autowired
+    private RoleResourceMappingDAO roleResourceMappingDAO;
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -121,6 +123,12 @@ public class UserService {
             return response;
         }
         return response;
+    }
+
+    public Response<UserVO> detail(Long userId){
+        UserVO vo = new UserVO();
+        
+        return ResponseUtils.buildResponseByCode(ErrorCode.OK,vo);
     }
 
     private String generateUserToken(String passWord){

@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,5 +87,13 @@ public class UserController {
             response =  ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,e);
         }
         return response;
+    }
+
+    @RequestMapping(value = UrlConstant.DETAIL,method = RequestMethod.POST)
+    public Response detail(@RequestParam("userId") Long userId){
+        if (ObjectUtils.isEmpty(userId)){
+            return ResponseUtils.buildResponseByCode(ErrorCode.EXCEPTION,"userId不能为空");
+        }
+        return userService.detail(userId);
     }
 }
