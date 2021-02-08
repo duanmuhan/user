@@ -44,7 +44,7 @@ public class UserService {
                 return response;
             }
             UserPO mailUser = userDAO.queryUserByMail(user.getMail());
-            if (!ObjectUtils.isEmpty(phoneUser)){
+            if (!ObjectUtils.isEmpty(mailUser)){
                 response = ResponseUtils.buildResponseByCode(ErrorCode.LOGIN_ERROR,"用户邮箱已经注册");
                 return response;
             }
@@ -127,7 +127,6 @@ public class UserService {
 
     public Response<UserVO> detail(Long userId){
         UserVO vo = new UserVO();
-        
         return ResponseUtils.buildResponseByCode(ErrorCode.OK,vo);
     }
 

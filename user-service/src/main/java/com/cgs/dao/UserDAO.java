@@ -9,7 +9,7 @@ public interface UserDAO {
 
     String TABLE_NAME = " user_info ";
 
-    String COLUMNS = " user_id, user_name, pass_word, tel_phone, pic_url, status, vip, mail ";
+    String COLUMNS = " user_id, user_name, pass_word, tel_phone, pic_url, status, vip, mail , valid ";
 
     @Insert("insert into " + TABLE_NAME + "(" + COLUMNS + ")"
             + " values (#{user.userId}, #{user.userName}, #{user.passWord}, #{user.telPhone}, #{user.picUrl}, #{user.status}, #{user.vip}, #{user.mail} )")
@@ -32,12 +32,15 @@ public interface UserDAO {
     public UserPO queryUserByPhone(@Param("phone") String phone);
 
     @ResultMap(value="resultMap")
-    @Select(" select * from " + TABLE_NAME + " where mail=#{mail} ")
+    @Select(" select * from " + TABLE_NAME + " where mail=#{mail} and valid=1 ")
     public UserPO queryUserByMail(@Param("mail") String mail);
 
     @ResultMap(value="resultMap")
-    @Select(" select * from " + TABLE_NAME + " where user_name=#{userName} ")
+    @Select(" select * from " + TABLE_NAME + " where user_name=#{userName} and valid=1 ")
     public UserPO queryUserByUserName(@Param("userName") String userName);
 
+    @Select(" select * from " + TABLE_NAME + " where user_id=#{userId}")
+    @ResultMap(value = "resultMap")
+    public UserPO queryUserByUserId(@Param("userId") Long userId);
 
 }
