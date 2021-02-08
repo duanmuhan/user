@@ -17,7 +17,6 @@ public class UserRoleMappingDTO {
     @NotNull(message = "userName 不能为空")
     private String userName;
     @NotNull(message = "roleId不能为空")
-
     private Long roleId;
     @NotNull(message = "roleName不能为空")
     private Long roleName;

@@ -13,14 +13,13 @@ public interface UserRoleMappingDAO {
     String COLUMNS = " user_id, user_name, role_id, role_name,valid, ctime, utime ";
 
     @Results( id = "resultMap",value = {
-            @Result(property = "resourceId",column = "user_id"),
-            @Result(property = "name",column = "user_name"),
-            @Result(property = "description",column = "role_id"),
-            @Result(property = "description",column = "role_name"),
-            @Result(property = "description",column = "valid"),
-            @Result(property = "description",column = "ctime"),
-            @Result(property = "description",column = "utime"),
-            @Result(property = "valid",column = "valid")
+            @Result(property = "userId",column = "user_id"),
+            @Result(property = "userName",column = "user_name"),
+            @Result(property = "roleId",column = "role_id"),
+            @Result(property = "roleName",column = "role_name"),
+            @Result(property = "valid",column = "valid"),
+            @Result(property = "ctime",column = "ctime"),
+            @Result(property = "utime",column = "utime")
     })
 
     @Insert(" insert into " + TABLE_NAME + "(" + COLUMNS + ")" + " values " +
@@ -32,6 +31,7 @@ public interface UserRoleMappingDAO {
 
 
     @Select("select * from " + TABLE_NAME + " where user_id = #{userId} ")
+    @ResultMap(value = "resultMap")
     public UserRoleMappingPO queryUserRoleMappingByUserId(@Param("userId") Long userId);
 
 
